@@ -38,8 +38,7 @@ void GridTab::resizeEvent(QResizeEvent * event)
 	
 	int count = m_ListViewPort->GetList()->GetCounts();
 	int width = this->size().width()-m_VScrollBar->width();
-	int column = width/WIDTH;
-	column = width/WIDTH==0 ? 1 : column;
+	int column = width/WIDTH==0 ? 1 : width/WIDTH;
 	int row = count/column;
 	row = count%column==0 ? row : (row+1) ;
 	

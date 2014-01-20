@@ -165,14 +165,19 @@ void PriceDisplayBoard::LayoutDisplayBoard()
 	QVBoxLayout* halfFrontLayout3 = new QVBoxLayout();
 	QVBoxLayout* halfFrontLayout4 = new QVBoxLayout();
 	QVBoxLayout* halfFrontLayout5 = new QVBoxLayout();
+
 	halfFrontLayout1->addWidget(tradingCode,0,Qt::AlignTop);
 	halfFrontLayout1->addWidget(m_CurrentTime,0,Qt::AlignBottom);
+
 	halfFrontLayout2->addWidget(m_StatusBmp,0,Qt::AlignTop);
 	halfFrontLayout2->addWidget(new QLabel(""),0,Qt::AlignBottom);
+
 	halfFrontLayout3->addWidget(m_CurrentPriceComm,0,Qt::AlignTop);
 	halfFrontLayout3->addWidget(m_HightLow,0,Qt::AlignBottom);
+
 	halfFrontLayout4->addWidget(m_CurrentBidBox,0,Qt::AlignTop);
 	halfFrontLayout4->addWidget(m_Hightest,0,Qt::AlignBottom);
+
 	halfFrontLayout5->addWidget(m_CurrentAskBox,0,Qt::AlignTop|Qt::AlignRight);
 	halfFrontLayout5->addWidget(m_Lowest,0,Qt::AlignBottom|Qt::AlignRight);
 	

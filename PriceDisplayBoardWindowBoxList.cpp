@@ -70,12 +70,12 @@ void PriceDisplayBoardWindowBoxList::mousePressEvent(QMouseEvent * event)
 		connect(preClose,SIGNAL(triggered()), this, SLOT(PreClose()));
 		QAction* interestRate = new QAction(tr("&InterestRate"), this);
 		connect(interestRate,SIGNAL(triggered()), this, SLOT(InterestRate()));
-		
+
 		QActionGroup* infoGroup = new QActionGroup(this);
 		infoGroup->addAction(highestLowest);
 		infoGroup->addAction(preClose);
 		infoGroup->addAction(interestRate);
-		
+
 		QMenu* marketInfo = popupMenu->addMenu(tr("&MarketInformations"));
 		marketInfo->addAction(highestLowest);
 		marketInfo->addAction(preClose);
@@ -111,7 +111,7 @@ void PriceDisplayBoardWindowBoxList::AddSlot()
 		this->Clear();
 		QList<TradeItem> itemList; 
 
- 		TradeItem item("");
+		TradeItem item("");
 		item.m_TradingCode = " ";
 		item.m_CurrentTime = "15:50:36";
 		item.m_CurrentBidPrice = "85.32";
@@ -156,7 +156,7 @@ void PriceDisplayBoardWindowBoxList::ChartSlot(int index)
 {
 	///.....
 	//QMessageBox::about(this,"ddd","chart");
-	
+
 }
 void PriceDisplayBoardWindowBoxList::DeleteSlot(int index)
 {
@@ -187,7 +187,7 @@ void PriceDisplayBoardWindowBoxList::MoveUpSlot(int index)
 		m_PriceDisplayBoardWindowBoxList.move(index,index-1);
 		m_PriceDisplayBoardWindowBoxList[index]->SetOrderIndex(index);
 		m_PriceDisplayBoardWindowBoxList[index-1]->SetOrderIndex(index-1);
- 		emit MoveUpSignal(index);
+		emit MoveUpSignal(index);
 	}
 	this->Resize();
 }
@@ -262,21 +262,24 @@ void PriceDisplayBoardWindowBoxList::RealTimeDisplay(const TradeItem& item)
 }
 void PriceDisplayBoardWindowBoxList::ReSizeSlot(int row,int column)
 {
-	int count = m_PriceDisplayBoardWindowBoxList.count();
 	int x=0,y=0;
-	int n = 0;
+	int itemIndex = 0;
+	int itemHeight = HEIGHT+GRAP;
+	int itemWidth = WIDTH+GRAP;
+	int edgePad = 2*GRAP;
 	for(int i=0;i<row;i++)
 	{
-		y = i * (HEIGHT+GRAP) + 2*GRAP;
+		y = i * itemHeight + edgePad;
 		for(int j=0;j<column;j++) 
 		{
-			x = j * (WIDTH+GRAP) + 2*GRAP;		  
-			if(n>=count)
-				break;
-			m_PriceDisplayBoardWindowBoxList[n++]->move(x,y);
+			x = j * itemWidth + edgePad;		  
+			if(itemIndex < m_PriceDisplayBoardWindowBoxList.count())
+			{
+				m_PriceDisplayBoardWindowBoxList[itemIndex++]->move(x,y);
+			}
 		}
 	}
-	
+
 }
 
 
