@@ -14,8 +14,6 @@
 
 TabsDialog::TabsDialog(QList<TradeItem>& itemList,const QString& columnJsonFile,QWidget *parent):QDialog(parent)
 {
-//	this->setMinimumSize(700,300);	
-
 	ListTab* listTab = new ListTab(itemList,columnJsonFile,parent);
 	GridTab* gridTab = new GridTab(itemList,parent);
 	

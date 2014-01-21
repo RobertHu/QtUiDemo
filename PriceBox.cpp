@@ -6,14 +6,14 @@
 
 PriceBox::PriceBox(QWidget *parent)  : QWidget(parent)
 {
-	this->Init(parent);
+	this->Init();
 }
 
 
-PriceBox::PriceBox(const QString& text,QWidget *parent) : QWidget(parent)
+PriceBox::PriceBox(const QString& text,QWidget *parent) : QWidget(parent),
+	m_Text(text)
 {
-	this->Init(parent);
-	m_Text = text;
+	this->Init();
 }
 
 PriceBox::~PriceBox()
@@ -135,13 +135,11 @@ int PriceBox::GetFontSize()
 {
 	return this->font().pixelSize();
 }
-void PriceBox::Init(QWidget* parent)
+void PriceBox::Init()
 {
 	m_Size = QSize(50,25);
 	m_Radius = 25;
 	m_Color = Qt::gray;
 	m_ShowWidget = true;
-	m_Text = "";
 	m_ShowFrame = true;
-	m_CornerText = "";
 }

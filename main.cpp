@@ -16,8 +16,6 @@
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-
-
 	QList<TradeItem> itemList;
 
 	TradeItem item("");

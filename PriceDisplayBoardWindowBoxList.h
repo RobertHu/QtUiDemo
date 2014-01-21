@@ -50,7 +50,6 @@ private:
 	void	Clear();
 
 private:
-	int									m_Counts;
 	QList<TradeItem>&					m_ItemList;			 //ÒýÓÃ;
 	QList<PriceDisplayBoardWindowBox*>  m_PriceDisplayBoardWindowBoxList;
 	

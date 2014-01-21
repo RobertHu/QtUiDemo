@@ -125,15 +125,15 @@ void PriceDisplayBoardWindowBox::DownToBottom()
 }
 void PriceDisplayBoardWindowBox::HighestLowest()
 {
-	m_PriceDisplayBoard->ChangeMarketInfo(HIGHTLOW);
+	m_PriceDisplayBoard->ChangeMarketInfo(MarkInfoType::HighLow);
 }
 void PriceDisplayBoardWindowBox::PreClose()
 {
-	m_PriceDisplayBoard->ChangeMarketInfo(PRECLOSE);
+	m_PriceDisplayBoard->ChangeMarketInfo(MarkInfoType::PreClose);
 }
 void PriceDisplayBoardWindowBox::InterestRate()
 {
-	m_PriceDisplayBoard->ChangeMarketInfo(INTERESTCLOSE);
+	m_PriceDisplayBoard->ChangeMarketInfo(MarkInfoType::InterestClose );
 }
 void PriceDisplayBoardWindowBox::TurnOver()
 {	

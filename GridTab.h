@@ -17,6 +17,7 @@ public:
 	 //overwrite:							 
 protected:
 	 void  resizeEvent(QResizeEvent * event);
+	 void wheelEvent(QWheelEvent * event);
 
 signals:
 	void SendReSizeSignal(int row,int column);

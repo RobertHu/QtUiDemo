@@ -1,5 +1,5 @@
-#ifndef ENUM_H
-#define ENUM_H
+#ifndef ___________________ENUM_H
+#define ___________________ENUM_H
 
 //翻转控件参数;
 enum GridItemEnum
@@ -9,10 +9,18 @@ enum GridItemEnum
 	WIDTH = 270+2*GRAP,		//+2*GRAP不能更改，只能改前面的数字,如将400改为300或500，下同;
 	HEIGHT = 80+2*GRAP,
 };
-enum MarkInfo
+
+
+namespace MarkInfoType
 {
-	HIGHTLOW,PRECLOSE,INTERESTCLOSE
-};
+	enum MarkInfoType
+	{
+		HighLow,
+		PreClose,
+		InterestClose
+	};
+}
+
 enum OrderEnum
 {
 	CONTROLSGRAP = 5,

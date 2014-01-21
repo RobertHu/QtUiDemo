@@ -37,7 +37,7 @@ public:
 
 
 private:
-	void Init(QWidget* parent);
+	void Init();
 
 private:
 	int		m_Radius;	//Բ�ǰ뾶;

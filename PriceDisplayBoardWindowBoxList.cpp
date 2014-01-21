@@ -19,8 +19,8 @@ PriceDisplayBoardWindowBoxList::PriceDisplayBoardWindowBoxList(QList<TradeItem>&
 {	
 	this->setBackgroundRole(QPalette::Window);
 	this->InitList();
-	//this->setResizeMode(QListView::Adjust);
 }
+
 void PriceDisplayBoardWindowBoxList::InitList()
 {
 	QListIterator<TradeItem> it(m_ItemList);
@@ -34,18 +34,19 @@ void PriceDisplayBoardWindowBoxList::InitList()
 		m_PriceDisplayBoardWindowBoxList.append(item); //½«TradeItem×ª»»³ÉGritItem;
 		i++;
 	}
-	m_Counts = m_PriceDisplayBoardWindowBoxList.count();
 }
+
 void PriceDisplayBoardWindowBoxList::Resize()
 {
-	m_Counts = m_PriceDisplayBoardWindowBoxList.count();
+	int itemCount = m_PriceDisplayBoardWindowBoxList.count();
 	int width = ((QWidget*)(parent()->parent()))->size().width() - ((GridTab*)(parent()->parent()))->GetVScrollBar()->width();
 	int column = width/WIDTH;
 	column = width/WIDTH==0 ? 1 : column;	//if(width < WIDTH) => column = 1;
-	int row = m_Counts/column;
-	row = m_Counts%column==0 ? row : (row+1) ;
+	int row = itemCount/column;
+	row = itemCount%column==0 ? row : (row+1) ;
 	ReSizeSlot(row,column);
 }
+
 void PriceDisplayBoardWindowBoxList::Clear()
 {
 	while(m_PriceDisplayBoardWindowBoxList.count()>0)
@@ -180,6 +181,7 @@ void PriceDisplayBoardWindowBoxList::DeleteSlot(int index)
 	this->Resize();
 	emit DeleteSignal(index);
 }
+
 void PriceDisplayBoardWindowBoxList::MoveUpSlot(int index)
 {
 	if(index>0)
@@ -227,6 +229,7 @@ void PriceDisplayBoardWindowBoxList::DownToBottomSlot(int index)
 	}
 	this->Resize();
 }
+
 void PriceDisplayBoardWindowBoxList::HighestLowest()
 {
 	for(int i=0;i<m_PriceDisplayBoardWindowBoxList.count();i++)
@@ -234,6 +237,7 @@ void PriceDisplayBoardWindowBoxList::HighestLowest()
 		m_PriceDisplayBoardWindowBoxList[i]->HighestLowest();
 	}
 }
+
 void PriceDisplayBoardWindowBoxList::PreClose()
 {
 	for(int i=0;i<m_PriceDisplayBoardWindowBoxList.count();i++)
@@ -241,6 +245,7 @@ void PriceDisplayBoardWindowBoxList::PreClose()
 		m_PriceDisplayBoardWindowBoxList[i]->PreClose();
 	}
 }
+
 void PriceDisplayBoardWindowBoxList::InterestRate()
 {
 	for(int i=0;i<m_PriceDisplayBoardWindowBoxList.count();i++)
@@ -248,6 +253,7 @@ void PriceDisplayBoardWindowBoxList::InterestRate()
 		m_PriceDisplayBoardWindowBoxList[i]->InterestRate();
 	}
 }
+
 void PriceDisplayBoardWindowBoxList::RealTimeDisplay(const TradeItem& item)
 {
 	for(int i=0;i<m_PriceDisplayBoardWindowBoxList.count();i++)
@@ -260,6 +266,7 @@ void PriceDisplayBoardWindowBoxList::RealTimeDisplay(const TradeItem& item)
 		}
 	}
 }
+
 void PriceDisplayBoardWindowBoxList::ReSizeSlot(int row,int column)
 {
 	int x=0,y=0;
@@ -285,5 +292,5 @@ void PriceDisplayBoardWindowBoxList::ReSizeSlot(int row,int column)
 
 int PriceDisplayBoardWindowBoxList::GetCounts()
 {
-	return m_Counts;
+	return m_PriceDisplayBoardWindowBoxList.count();
 }
